@@ -1,0 +1,40 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+.content {
+    max-width: 640px;
+    width: 100%;
+    padding: 20px;
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    a {
+        color: #ffffff;
+    }
+
+    a:hover {
+        color: #b8b8b8;
+    }
+}
+
+@media (max-width: 600px) {
+    .content p {
+        font-size: 20px;
+    }
+}
