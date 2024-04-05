@@ -26,7 +26,12 @@ export default function BlogListPage(props: PageProps<Post[]>) {
 function PostEntry(props: { post: Post }) {
   return (
     <li>
-      <a href={`/blog/${props.post.id}`}>{props.post.id}</a>
+      <a href={`/blog/${props.post.id}`}>
+        <div>
+          {props.post.published.toLocaleDateString()} - {props.post.title}
+        </div>
+        <div>{props.post.snippet}</div>
+      </a>
     </li>
   );
 }
