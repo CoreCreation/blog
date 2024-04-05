@@ -1,4 +1,6 @@
 {
+  "name": "@corecreation/blog",
+  "version": "0.0.1",
   "lock": false,
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
