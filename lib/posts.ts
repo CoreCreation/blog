@@ -1,4 +1,8 @@
 import { extract } from "$std/front_matter/any.ts";
+import * as path from "$std/path/mod.ts";
+
+// env
+import "$std/dotenv/load.ts";
 
 export interface Post {
   id: string;
@@ -8,10 +12,16 @@ export interface Post {
   content: string;
 }
 
+function getDir(file: string = "") {
+  const dir = Deno.env.get("POSTS");
+  if (!dir) throw new Error("Please provide the post route in the .env");
+  return path.resolve(".", dir, file);
+}
+
 export async function loadPost(id: string): Promise<Post | null> {
   let text: string;
   try {
-    text = await Deno.readTextFile(`./data/posts/${id}.md`);
+    text = await Deno.readTextFile(getDir(`${id}.md`));
   } catch (err) {
     if (err instanceof Deno.errors.NotFound) {
       return null;
@@ -32,7 +42,7 @@ export async function loadPost(id: string): Promise<Post | null> {
 
 export async function listPosts(): Promise<Post[]> {
   const promises = [];
-  for await (const entry of Deno.readDir("./data/posts")) {
+  for await (const entry of Deno.readDir(getDir())) {
     promises.push(loadPost(entry.name.slice(0, -3)));
   }
   const posts = await Promise.all(promises) as Post[];

@@ -6,6 +6,12 @@ Currently in the works, its initial goal is to become a custom blog platform for
 
 ### Usage
 
+#### Configuration
+
+Ensure a `.env` is present. See the `.env.examples` and `.env.defaults` file for more information.
+
+#### Development
+
 Make sure to install Deno: https://deno.land/manual/getting_started/installation
 
 Then start the project:
@@ -16,4 +22,6 @@ deno task start
 
 This will watch the project directory and restart as necessary.
 
-Blog Posts can go in `data/posts`, a folder that is not in this repo. 
+#### Testing
+
+Currently testing should be started with the test task `deno task test`. This is subject to change as more is learned about the system and a better test configuration option is found. 
